@@ -1,10 +1,10 @@
 ﻿namespace GenericLesson
 {
-    internal class CustomCollection<Person> where Person : class
-    {
-        Employee[] employees = new Employee[0];
+    internal class CustomCollection<T> where T: Person
+    {   
+        T[] employees = new T[0];
 
-        public void AddEmployee(Employee employee)
+        public void AddEmployee(T employee)
         {
             Array.Resize(ref employees, employees.Length + 1);
             employees[^1] = employee;
@@ -16,11 +16,11 @@
                 Console.WriteLine("Employees not exist");
             else
             {
-                foreach (Employee e in employees)
+                foreach (T e in employees)
                 {
                     if (e.Id == id)
                     {
-                        Console.WriteLine($"Id: {e.Id}, Name: {e.Name}, Surname: {e.Surname}, Age: {e.Age}, Salary: {e.Salary}");
+                        Console.WriteLine($"Id: {e.Id}, Name: {e.Name}, Surname: {e.Surname}, Age: {e.Age}");
                         break;
                     }
                     else
@@ -35,9 +35,9 @@
                 Console.WriteLine("Employees not exist");
             else
             {
-                foreach (Employee e in employees)
+                foreach (T e in employees)
                 {
-                    Console.WriteLine($"Id: {e.Id}, Name: {e.Name}, Surname: {e.Surname}, Age: {e.Age}, Salary: {e.Salary}");
+                    Console.WriteLine($"Id: {e.Id}, Name: {e.Name}, Surname: {e.Surname}, Age: {e.Age}");
                 }
             }
         }
