@@ -6,7 +6,7 @@
         public string Name { get; set; }
         public string Surname { get; set; }
         public byte Age { get; set; }
-        public static int Increment {  get; set; } = 1;
+        public static int Increment { get; private set; } = 1;
 
         public Person(string name, string surname, byte age)
         {

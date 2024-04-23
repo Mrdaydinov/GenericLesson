@@ -1,7 +1,9 @@
-﻿namespace GenericLesson
+﻿using System.Reflection.Metadata;
+
+namespace GenericLesson
 {
-    internal class CustomCollection<T> where T: Person
-    {   
+    internal class CustomCollection<T> where T : Person
+    {
         T[] employees = new T[0];
 
         public void AddEmployee(T employee)
@@ -18,13 +20,27 @@
             {
                 foreach (T e in employees)
                 {
-                    if (e.Id == id)
+                    if (id >= Person.Increment)
                     {
-                        Console.WriteLine($"Id: {e.Id}, Name: {e.Name}, Surname: {e.Surname}, Age: {e.Age}");
+                        Console.WriteLine("Id not found");
                         break;
                     }
-                    else
-                        Console.WriteLine("Not found");
+                    else if (e.Id == id)
+                    {
+                        var employee = e as Employee;
+                        if (employee != null)
+                        {
+                            Console.WriteLine($"Id: {employee.Id}, Name: {employee.Name}, Surname: {employee.Surname}, Age: {employee.Age}," +
+                                $" Salary: {employee.Salary}");
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Id: {e.Id}, Name: {e.Name}, Surname: {e.Surname}, Age: {e.Age}");
+                            break;
+                        }
+                    }
+                   
                 }
             }
         }
@@ -37,7 +53,14 @@
             {
                 foreach (T e in employees)
                 {
-                    Console.WriteLine($"Id: {e.Id}, Name: {e.Name}, Surname: {e.Surname}, Age: {e.Age}");
+                    var employee = e as Employee;
+                    if (employee != null)
+                    {
+                        Console.WriteLine($"Id: {employee.Id}, Name: {employee.Name}, Surname: {employee.Surname}, Age: {employee.Age}," +
+                            $" Salary: {employee.Salary}");
+                    }
+                    else
+                        Console.WriteLine($"Id: {e.Id}, Name: {e.Name}, Surname: {e.Surname}, Age: {e.Age}");
                 }
             }
         }

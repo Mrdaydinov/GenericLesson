@@ -4,6 +4,9 @@
     {
         static void Main(string[] args)
         {
+
+            
+
             CustomCollection<Employee> employees = new CustomCollection<Employee>();
             while (true)
             {
